@@ -9,7 +9,9 @@ function App() {
   return (
     <div>
       <Header />
-      <h1>Conteúdo...</h1>
+      <main>
+        <h1>Conteúdo...</h1>
+      </main>
       <Footer />
     </div>
   )
