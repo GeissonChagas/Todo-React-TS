@@ -4,10 +4,6 @@
   font-family: 'Poppins', sans-serif;
 }
 
-main{
-  min-height: 60vh;
-}
-
 .hide{
   display: none !important;
 }
