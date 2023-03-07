@@ -1,46 +1,26 @@
-# Getting Started with Create React App
+# To do - React + TS
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este é um projeto de uma To-Do List (lista de tarefas) construída com React e Typescript, utilizando o conceito de CRUD (Create, Read, Update, Delete) para gerenciar as tarefas.
 
-## Available Scripts
+## Instalação
 
-In the project directory, you can run:
+  - Clone o repositório para sua máquina local.
+  - Navegue até a pasta raiz do projeto e execute o comando npm install ou yarn install para instalar as dependências.
+  - Execute o comando npm start ou yarn start para iniciar o servidor local.
+  
+## Uso
 
-### `npm start`
+Ao abrir o projeto em seu navegador, você verá uma interface simples com um campo de texto para adicionar novas tarefas e uma lista de tarefas existentes.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+  - Para adicionar uma nova tarefa, digite o nome da tarefa no campo de texto e pressione o botão "Adicionar tarefa".
+  - Para editar uma tarefa existente, clique no botão de edição (ícone de lápis) ao lado da tarefa desejada e faça as alterações necessárias no campo de texto. Em    seguida, pressione o botão "Salvar" para salvar as alterações ou "Cancelar" para descartá-las.
+  - Para excluir uma tarefa existente, clique no botão de exclusão (ícone de lixeira) ao lado da tarefa desejada.
+  - Para marcar uma tarefa como concluída, clique na caixa de seleção ao lado da tarefa.
+  
+## Contribuição
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Contribuições são sempre bem-vindas! Sinta-se à vontade para abrir uma "issue" ou enviar um "pull request" com suas sugestões de melhorias para o projeto.
 
-### `npm test`
+##  Prints:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+![print](https://user-images.githubusercontent.com/115817581/223292391-78479402-c4ec-4f18-8903-c1483467bd2d.png)
