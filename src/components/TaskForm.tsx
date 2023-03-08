@@ -16,19 +16,18 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
 
     const [id, setId] = useState<number>(0);
     const [title, setTitle] = useState<string>("");
-    const [hour, setHour] = useState<number>(0);
+    const [hour, setHour] = useState<string>("");
 
     function addTaskHandler(e: FormEvent<HTMLFormElement>) {
-
         e.preventDefault();
 
         const id = Math.floor(Math.random() * 1000)
-        const newTask: ITask = {id, title, hour}
+        const newTask: ITask = {id, title, hour};
 
         setTaskList!([...taskList, newTask])
 
         setTitle("");
-        setHour(0);
+        setHour("");
 
         console.log(taskList)
     }
@@ -37,10 +36,12 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
         if (e.target.name === "title") {
             setTitle(e.target.value);
         } else {
-            setHour(parseInt(e.target.value));
+            const [hours, minutes] = e.target.value.split(':');
+            const formattedHours = hours.toString().padStart(2, '0');
+            const formattedMinutes = minutes.toString().padStart(2, '0');
+            setHour(`${formattedHours}:${formattedMinutes}`);
         }
-
-    }
+    }    
 
     return (
         <form onSubmit={addTaskHandler} className={styles.form}>
@@ -51,7 +52,7 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
                     name="title" 
                     placeholder="Digite o título da tarefa"
                     onChange={handleChange}
-                    value = {title} 
+                    value={title} 
                 />
             </div>
             <div className={styles.input_container}>
@@ -61,7 +62,7 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
                     name="hour" 
                     placeholder="Digite o horário da tarefa" 
                     onChange={handleChange}
-                    value = {hour} 
+                    value={hour} 
                 />
             </div>
             <div>
@@ -70,5 +71,6 @@ const TaskForm = ({ btnText, taskList, setTaskList }: Props) => {
         </form>
     );
 };
+
 
 export default TaskForm;
