@@ -1,14 +1,19 @@
 import React from "react";
 
-interface Props{
+//interfaces
+import {ITask} from '../interfaces/Task'
 
+// CSS
+import styles from './TaskList.module.css'
+interface Props{
+    taskList: ITask[];
 }
 
 
-const TaskList = (props: Props) => {
+const TaskList = ({ taskList }: Props) => {
     return (
         <div>
-            <p>Formulário</p>
+            <p>Lista de tarefas</p>
         </div>
     )
 }
