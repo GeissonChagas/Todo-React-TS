@@ -3,14 +3,20 @@ import React, { useState } from 'react';
 //components
 import Footer from './components/Footer';
 import Header from './components/Header';
-
-//styles
-import styles from './App.module.css'
+import Modal from './components/Modal';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
 
+//styles
+import styles from './App.module.css'
+
 //interface
 import { ITask } from './interfaces/Task';
+
+interface Props {
+  taskList: ITask[];
+  btnText: string;
+}
 
 function App() {
 
@@ -22,15 +28,18 @@ function App() {
     )
   }
 
-  const [taskList, setTaskList] = useState <ITask[]>([])
+  const [taskList, setTaskList] = useState<ITask[]>([])
 
   return (
     <div>
+      <Modal taskList={taskList} btnText="Editar Tarefa">
+        <TaskForm taskList={taskList} setTaskList={setTaskList} btnText='Criar Tarefa' />
+      </Modal>
       <Header />
       <main className={styles.app}>
         <div>
           <h2>O que pretende fazer?</h2>
-          <TaskForm btnText='Criar Tarefa' taskList={taskList} setTaskList={setTaskList} />
+          <TaskForm taskList={taskList} setTaskList={setTaskList} btnText='Criar Tarefa' />
         </div>
         <div>
           <h2>Suas tarefas:</h2>

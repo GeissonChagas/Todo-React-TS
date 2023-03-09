@@ -1,0 +1,29 @@
+.fade{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: #000;
+    opacity: 0.5;
+}
+
+.modal{
+    position: absolute;
+    top: 10%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    width: 50vw;
+    height: 60vh;
+    z-index: 1;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 3px;
+}
+
+.modal h2 {
+    margin-bottom: 1em;
+}
