@@ -7,10 +7,11 @@ import {ITask} from '../interfaces/Task'
 import styles from '../components/TaskList.module.css'
 
 interface Props{
-    taskList: ITask[];
-    handleDelete(id: number): void;
-    handleEdit(): void;
+  taskList: ITask[];
+  handleDelete(id: number): void;
+  handleEdit(task: ITask): void;
 }
+
 
 
 const TaskList = ({ taskList, handleDelete, handleEdit}: Props) => {
@@ -24,7 +25,7 @@ const TaskList = ({ taskList, handleDelete, handleEdit}: Props) => {
                     <p className={styles["task-time"]}>Horário: {task.hour} </p>
                 </div>
                 <div className={styles["task-icons"]}>
-                    <i className="bi bi-pencil" onClick = {() => handleEdit()} ></i>
+                    <i className="bi bi-pencil" onClick = {() => handleEdit(task)} ></i>
                     <i className="bi bi-trash" onClick={() => {handleDelete(task.id)}}></i>
                 </div>
             </div>
