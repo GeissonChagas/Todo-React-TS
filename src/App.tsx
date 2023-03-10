@@ -49,12 +49,21 @@ function App() {
     setTaskToUpdate(task)
   }
 
+  const updateTask = (id: number, title: string, hour: string) => {
 
+    const updatedTask = {id, title, hour};
+    const updatedItems = taskList.map((task) => {
+      return task.id === updatedTask.id ? updatedTask : task;
+    })
+    setTaskList(updatedItems);
+
+    hideOrShowModal(false);
+  } 
 
   return (
     <div>
       <Modal taskList={taskList} btnText="Editar Tarefa" >
-        <TaskForm taskList={taskList} setTaskList={setTaskList} btnText='Criar Tarefa'  task={taskToUpdate}/>
+        <TaskForm taskList={taskList} setTaskList={setTaskList} btnText='Editar Tarefa'  task={taskToUpdate} handleUpdate={updateTask} />
       </Modal>
       <Header />
       <main className={styles.app}>
@@ -73,3 +82,4 @@ function App() {
 }
 
 export default App;
+
