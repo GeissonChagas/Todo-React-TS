@@ -9,7 +9,7 @@ import { ITask } from "../interfaces/Task";
 interface Props {
   btnText: string;
   taskList: ITask[];
-  setTaskList?: React.Dispatch<React.SetStateAction<ITask[]>>;
+  setTaskList: React.Dispatch<React.SetStateAction<ITask[]>>;
   task?: ITask | null;
   handleUpdate?(id: number, title: string, hour:string): void;
 }
@@ -31,17 +31,16 @@ const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate }: Props)
     e.preventDefault();
 
     if (handleUpdate){
-        handleUpdate(id, title, hour)
+        handleUpdate(id, title, hour);
     } else {
         const id = Math.floor(Math.random() * 1000);
         const newTask: ITask = { id, title, hour };
-    
-        setTaskList!([...taskList, newTask]);
-    
+
+        setTaskList([...taskList, newTask]);
+
         setTitle("");
         setHour("");
     }
-
   }
 
   function handleChange(e: ChangeEvent<HTMLInputElement>) {
@@ -65,6 +64,7 @@ const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate }: Props)
           placeholder="Digite o título da tarefa"
           onChange={handleChange}
           value={title}
+          required
         />
       </div>
       <div className={styles.input_container}>
@@ -75,6 +75,7 @@ const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate }: Props)
           placeholder="Digite o horário da tarefa"
           onChange={handleChange}
           value={hour}
+          required
         />
       </div>
       <div>
@@ -85,4 +86,5 @@ const TaskForm = ({ btnText, taskList, setTaskList, task, handleUpdate }: Props)
 };
 
 export default TaskForm;
+
 

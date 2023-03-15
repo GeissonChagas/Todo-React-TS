@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 //components
 import Footer from './components/Footer';
@@ -13,57 +13,57 @@ import styles from './App.module.css'
 //interface
 import { ITask } from './interfaces/Task';
 
-interface Props {
-  taskList: ITask[];
-  btnText: string;
-  handleEdit: (task: ITask) => void;
-  handleDelete: (id: number) => void;
-}
-
-
 function App() {
+  const [taskList, setTaskList] = useState<ITask[]>(() => {
+    const storedList = localStorage.getItem("taskList");
+    if (storedList) {
+      return JSON.parse(storedList);
+    } else {
+      return [];
+    }
+  });
+  
+  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null);
 
-  const [taskList, setTaskList] = useState<ITask[]>([])
-  const [taskToUpdate, setTaskToUpdate] = useState<ITask | null>(null)
-
-
+  useEffect(() => {
+    localStorage.setItem("taskList", JSON.stringify(taskList));
+  }, [taskList]);
+  
   const deleteTask = (id: number) => {
-    setTaskList(
-      taskList.filter(task => {
-        return task.id !== id;
-      })
-    )
-  }
+    setTaskList((prevTaskList) =>
+      prevTaskList.filter(task => task.id !== id)
+    );
+  };
 
   const hideOrShowModal = (display: boolean) => {
     const modal = document.querySelector('#modal');
-    if (display) {
-      modal!.classList.remove('hide');
-    } else {
-      modal!.classList.add('hide');
+    if (modal) {
+      if (display) {
+        modal.classList.remove('hide');
+      } else {
+        modal.classList.add('hide');
+      }
     }
-  }
+  };
 
-  const editTask = (task: ITask): void => {
-    hideOrShowModal(true)
-    setTaskToUpdate(task)
-  }
+  const editTask = (task: ITask) => {
+    hideOrShowModal(true);
+    setTaskToUpdate(task);
+  };
 
   const updateTask = (id: number, title: string, hour: string) => {
-
-    const updatedTask = {id, title, hour};
-    const updatedItems = taskList.map((task) => {
-      return task.id === updatedTask.id ? updatedTask : task;
-    })
-    setTaskList(updatedItems);
-
+    const updatedTask = { id, title, hour };
+    setTaskList((prevTaskList) => {
+      const updatedItems = prevTaskList.map((task) => (task.id === updatedTask.id ? updatedTask : task));
+      return updatedItems;
+    });
     hideOrShowModal(false);
-  } 
+  };
 
   return (
     <div>
       <Modal taskList={taskList} btnText="Editar Tarefa" >
-        <TaskForm taskList={taskList} setTaskList={setTaskList} btnText='Editar Tarefa'  task={taskToUpdate} handleUpdate={updateTask} />
+        <TaskForm taskList={taskList} setTaskList={setTaskList} btnText='Editar Tarefa' task={taskToUpdate} handleUpdate={updateTask} />
       </Modal>
       <Header />
       <main className={styles.app}>
@@ -78,7 +78,7 @@ function App() {
       </main>
       <Footer />
     </div>
-  )
+  );
 }
 
 export default App;
